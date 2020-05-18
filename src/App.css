@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap');
+
 .App {
-  text-align: center;
+    text-align: center;
+    font-family: 'Rubik', sans-serif;
 }
 
 .App-logo {
@@ -35,4 +38,23 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+div, a {
+    margin: 15px;
+}
+
+.btn-spotify-login {
+    border-radius: 16px;
+    border: none;
+    background-color: #1FD760;
+    color: #FFF;
+    transition: .5s;
+    cursor: pointer;
+    padding: 4px 10px;
+}
+
+.btn-spotify-login:hover {
+    background-color: rgb(13, 97, 42);
+    transition: .5s;
 }
