@@ -15,6 +15,8 @@ export default class App extends Component {
             recievedResponse: false,
             nowPlaying: {
                 name: "Not Checked",
+                artist: "",
+                albumn: "",
                 image: ""
             }
         }
@@ -22,7 +24,7 @@ export default class App extends Component {
             spotifyWebApi.setAccessToken(params.access_token);
         } 
     }
-kwme
+
     getMusicImage = () => {
         return (
             <div>
@@ -53,6 +55,8 @@ kwme
                         recievedResponse: true,
                         nowPlaying: {
                             name: response.item.name,
+                            artist: response.item.album.artists[0].name,
+                            albumn: response.item.album.name,
                             image: response.item.album.images[0].url
                         }
                     });
@@ -70,10 +74,16 @@ kwme
     render() {
         return (
             <div className="App">
+                <h1>Streamwise for Spotify <i className="fab fa-spotify spotify-icon"></i></h1>
+                <hr />
                 {!this.state.loggedIn ? <Login /> : '' }                 
-                <div>Now Playing : {(this.state.nowPlaying.name !== '') ? this.state.nowPlaying.name : "Nothing is playing"}</div>
+                {(this.state.recievedResponse) ? <div>Now Playing - {(this.state.nowPlaying.name !== '') ? this.state.nowPlaying.name : "Nothing is playing"}</div> : 'Nothing is Playing'}
+                {(this.state.recievedResponse) ? <div>By - {(this.state.nowPlaying.artist !== '') ? this.state.nowPlaying.artist : "Nothing is playing"}</div> : ''}
+                {(this.state.recievedResponse) ? <div>Album - {(this.state.nowPlaying.albumn !== '') ? this.state.nowPlaying.albumn : "Nothing is playing"}</div> : ''}
                 {this.state.recievedResponse ? this.getMusicImage() : ''}
-                <button onClick={() => this.getNowPlaying()}>Check Now Playing</button>
+                <div>
+                    <button onClick={() => this.getNowPlaying()}>Now Playing</button>
+                </div>
             </div>
         );
 

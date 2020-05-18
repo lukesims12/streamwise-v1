@@ -58,3 +58,7 @@ div, a {
     background-color: rgb(13, 97, 42);
     transition: .5s;
 }
+
+.spotify-icon {
+    color: #1FD760;
+}
